@@ -1,14 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input"
 import { useTRPC } from "@/trpc/client"
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query"
+import { useState } from "react"
+import { toast } from "sonner"
 
 const Page =  () => {
-  const trpc = useTRPC();
+  const trpc = useTRPC()
   const [value, setValue] = useState('')
   const invoke = useMutation(trpc.invoke.mutationOptions({
     onSuccess: () =>{
