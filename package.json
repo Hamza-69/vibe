@@ -60,6 +60,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.59.0",
     "react-resizable-panels": "^3.0.3",
+    "react-textarea-autosize": "^8.5.9",
     "recharts": "^3.0.2",
     "serialize-error-cjs": "^0.2.0",
     "server-only": "^0.0.1",
