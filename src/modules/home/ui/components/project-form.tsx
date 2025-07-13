@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import {Form, FormField} from "@/components/ui/form"
 import { useRouter } from "next/navigation"
 import { PROJECT_TEMPLATES } from "../../constants"
+import { useClerk } from "@clerk/nextjs"
 
 const formSchema = z.object({
   value: z.string().min(1, {message: "Value is required"}).max(10000, {message: "Value is too long"})
@@ -29,6 +30,7 @@ export const ProjectForm = () => {
   const router = useRouter()
   const [isFocused, setIsFocused] = useState(false)
   const trpc = useTRPC()
+  const clerk = useClerk()
   const createProject = useMutation(trpc.projects.create.mutationOptions({
     onSuccess: (data) => {
       queryClient.invalidateQueries(
@@ -39,6 +41,9 @@ export const ProjectForm = () => {
     },
     onError: (error) => {
       toast.error(error.message)
+      if (error.data?.code === "UNAUTHORIZED") {
+        clerk.openSignIn()
+      }
     }
   }))
   const isPending = createProject.isPending

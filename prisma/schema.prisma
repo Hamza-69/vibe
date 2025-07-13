@@ -54,6 +54,7 @@ model Fragment {
 model Project {
   id String @id @default(uuid())
   name String
+  userId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

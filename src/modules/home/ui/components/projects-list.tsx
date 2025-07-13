@@ -6,23 +6,37 @@ import { formatDistanceToNow } from "date-fns"
 import { useQuery } from "@tanstack/react-query"
 import { useTRPC } from "@/trpc/client"
 import { Button } from "@/components/ui/button"
+import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs"
 
 export const ProjectsList = () => {
   const trpc = useTRPC()
+  const { user } = useUser()
   const {data: projects} = useQuery(trpc.projects.getMany.queryOptions())
 
   return (
     <div className="w-full bg-white dark:bg-sidebar rounded-xl p-8 border flex flex-col gap-y-6 sm:gap-y-4">
       <h2 className="text-2xl font-semibold">
-        Saved Vibes
+        {user?.firstName || "Saved" }{user?.firstName && "'s"} Vibes
       </h2>
+      {!user?.firstName ?
+      (
+        <div className="flex items-center gap-x-2">
+          <SignInButton>
+              Sign In
+          </SignInButton>
+          <p>or</p>
+          <SignUpButton>
+              Sign Up
+          </SignUpButton>
+          <p>to create vibes.</p>
+        </div>):
+        ""
+      }
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {projects?.length === 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <p className="text-sm text-muted-foreground">
               No Vibes Found
             </p>
-          </div>
         )}
         {
           projects?.map((p) => {
