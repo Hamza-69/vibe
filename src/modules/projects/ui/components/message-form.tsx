@@ -3,7 +3,7 @@ import {zodResolver} from "@hookform/resolvers/zod"
 import {z} from "zod"
 import TextareaAutosize from "react-textarea-autosize"
 import { ArrowUpIcon, Loader2Icon } from "lucide-react"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
@@ -30,7 +30,7 @@ export const MessageForm = ({projectId}: Props) => {
   const queryClient = useQueryClient()
 
   const [isFocused, setIsFocused] = useState(false)
-  const [showUsage, setShowUsage] = useState(false)
+  const [showUsage] = useState(false)
   const trpc = useTRPC()
   const createMessage = useMutation(trpc.messages.create.mutationOptions({
     onSuccess: () => {
