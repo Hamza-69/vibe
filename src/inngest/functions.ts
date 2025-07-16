@@ -17,6 +17,7 @@ export const codeAgentFunction = inngest.createFunction(
   async ({ event, step }) => { 
     const SandboxId = await step.run("get-sandbox-id", async () =>{
       const sandbox = await Sandbox.create("vibable-nexjs-hamza-3")
+      await sandbox.setTimeout(60_000*10*3) // 30 mins
       return sandbox.sandboxId
     })
 
@@ -28,8 +29,9 @@ export const codeAgentFunction = inngest.createFunction(
           projectId: event.data.projectId
         },
         orderBy : {
-          createdAt: "asc"
-        }
+          createdAt: "desc"
+        },
+        take: 10
       })
 
       for (const message of messages) {
@@ -40,7 +42,7 @@ export const codeAgentFunction = inngest.createFunction(
         })
       }
 
-      return formattedMessages
+      return formattedMessages.reverse()
     })
 
     const state = createState<AgentState>(

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const ShimmerMessages = () => {
   const messages = [
@@ -52,3 +53,14 @@ export const MessageLoading = () => {
     </div>
   )
 }
+
+export const MessagesSkeleton = () => (
+  <div className="flex flex-col gap-4 px-2 pb-4">
+    {[1,2,3].map((i) => (
+      <div key={i} className="flex items-center gap-2 pl-2 mb-2">
+        <Skeleton className="h-5 w-5 rounded-full" />
+        <Skeleton className="h-4 w-24" />
+      </div>
+    ))}
+  </div>
+)

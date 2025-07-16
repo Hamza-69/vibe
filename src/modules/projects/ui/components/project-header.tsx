@@ -5,8 +5,6 @@ import { useSuspenseQuery } from "@tanstack/react-query"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
-  EditIson,
-  SunMediumIcon,
   SunMoonIcon
 } from "lucide-react"
 import { useTRPC } from "@/trpc/client"
@@ -24,6 +22,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface Props {
   projectId: string
@@ -85,3 +84,12 @@ export const ProjectHeader = ({projectId}: Props) => {
     </header>
   )
 }
+
+export const ProjectHeaderSkeleton = () => (
+  <header className="p-2 flex justify-between items-center border-b">
+    <div className="flex items-center gap-2">
+      <Skeleton className="h-6 w-6 rounded-full" />
+      <Skeleton className="h-5 w-32" />
+    </div>
+  </header>
+)
