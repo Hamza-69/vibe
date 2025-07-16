@@ -53,14 +53,8 @@ export async function generateMetadata({ params }: { params: { projectId: string
   }
 }
 
-interface Props {
-  params: Promise<{
-    projectId: string
-  }>
-}
-
-const Page = async ({params}: Props) => {
-  const {projectId} = await params
+export default async function Page({ params }: { params: { projectId: string } }) {
+  const { projectId } = params
 
   const queryClient = getQueryClient()
   void queryClient.prefetchQuery(trpc.messages.getMany.queryOptions({
@@ -74,10 +68,8 @@ const Page = async ({params}: Props) => {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<p>Loading...</p>}>
-          <ProjectView projectId= {projectId}/>
+          <ProjectView projectId={projectId}/>
         </Suspense>
     </HydrationBoundary>
   )
 }
-
-export default Page
