@@ -6,9 +6,8 @@ export async function GET() {
     '',
     '/pricing',
   ]
-  const dynamicRoutes = projectIds.map(id => `/projects/${id}`)
 
-  const urls = [...staticRoutes, ...dynamicRoutes]
+  const urls = [...staticRoutes]
     .map(route =>
       `<url><loc>${baseUrl}${route}</loc></url>`
     )
