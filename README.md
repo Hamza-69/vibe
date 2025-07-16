@@ -1,8 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vibe
+
+Vibe lets you create apps and websites by chatting with AI. Instantly generate, deploy, and manage your projects with ease. Powered by Next.js, Prisma, Clerk authentication, TRPC, and a modern UI built with Shadcn and Tailwind CSS.
+
+## Features
+
+- **AI-powered app builder:** Describe what you want to build, and Vibe generates a working project for you.
+- **Project dashboard:** View, manage, and revisit all your generated projects.
+- **Live code preview:** Instantly see and explore the code for your generated apps.
+- **Authentication:** Secure sign-in and sign-up with Clerk.
+- **Modern UI:** Responsive, accessible design using Shadcn UI and Tailwind CSS.
+- **Project templates:** Quickly start with templates like Netflix, Kanban, Admin Dashboard, and more.
+- **Usage tracking:** Free and Pro plans with usage limits.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Hamza-69/vibe
+cd vibe
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+# Database
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+
+# (Optional) Clerk redirect URLs
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
+
+# (Optional) App URL for TRPC
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+> You can find your Clerk keys in the [Clerk Dashboard](https://dashboard.clerk.com/). For more Clerk environment variables, see the [Clerk docs](https://clerk.com/docs/deployments/clerk-environment-variables).
+
+### 4. Set up the database
+
+Run Prisma migrations to set up your database schema:
+
+```bash
+npx prisma migrate deploy
+# or, for development:
+npx prisma migrate dev
+```
+
+### 5. Start the development server
 
 ```bash
 npm run dev
@@ -10,27 +73,34 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to use Vibe.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Sign up or sign in** with Clerk.
+2. **Describe what you want to build** (e.g., "Build a kanban board with drag-and-drop").
+3. **Explore your generated project**: preview the app, view the code, and manage your projects from the dashboard.
+4. **Upgrade to Pro** for higher usage limits.
 
-## Learn More
+## Tech Stack
+- Next.js 15+
+- Prisma ORM & PostgreSQL
+- Clerk (authentication)
+- TRPC (API)
+- Shadcn UI & Tailwind CSS
+- React Query
+- Inngest (background jobs)
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+- `src/app/` — Next.js app directory (pages, layouts, API routes)
+- `src/modules/` — Feature modules (home, projects, messages, usage)
+- `src/components/` — Shared UI components
+- `prisma/` — Prisma schema and migrations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
+Vibe is ready to deploy on [Vercel](https://vercel.com/) or any platform supporting Next.js and PostgreSQL. Set all required environment variables in your deployment dashboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT
