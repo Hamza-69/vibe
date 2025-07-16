@@ -4,7 +4,7 @@ export async function GET() {
   // TODO: Replace with real project IDs from your database
   const projectIds = ['example-project-1', 'example-project-2']
 
-  const baseUrl = 'https://vibable.vercel.app'
+  const baseUrl = 'https://vibable.xyz'
   const staticRoutes = [
     '',
     '/pricing',

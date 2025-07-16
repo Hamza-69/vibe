@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { projectId: string
     openGraph: {
       title: `${project.name} | Vibe Project`,
       description: `View details and progress for the project '${project.name}' on Vibe.`,
-      url: `https://vibable.vercel.app/projects/${params.projectId}`,
+      url: `https://vibable.xyz/projects/${params.projectId}`,
       siteName: "Vibe",
       images: [
         {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: { projectId: string
       type: "website",
     },
     alternates: {
-      canonical: `https://vibable.vercel.app/projects/${params.projectId}`,
+      canonical: `https://vibable.xyz/projects/${params.projectId}`,
     },
     twitter: {
       card: "summary_large_image",

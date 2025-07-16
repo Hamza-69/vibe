@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "Web development",
     "App generator"
   ],
-  authors: [{ name: "Vibe Team", url: "https://vibe.example.com" }],
+  authors: [{ name: "Vibe Team", url: "https://vibable.xyz" }],
   creator: "Vibe Team",
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vibe | Build with AI",
     description: "Create apps and websites by chatting with AI. Instantly generate, deploy, and manage your projects with Vibe.",
-    url: "https://vibe.example.com",
+    url: "https://vibable.xyz",
     siteName: "Vibe",
     images: [
       {
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://vibe.example.com",
+    canonical: "https://vibable.xyz",
   },
 }
 
@@ -98,11 +98,10 @@ export default function RootLayout({
               type="application/ld+json"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                  "@context": "https://schema.org",
                   "@type": "Organization",
                   "name": "Vibe",
-                  "url": "https://vibable.vercel.app",
-                  "logo": "https://vibable.vercel.app/logo.png",
+                  "url": "https://vibable.xyz",
+                  "logo": "https://vibable.xyz/logo.png",
                   "sameAs": [
                     "https://twitter.com/vibeai"
                   ]
@@ -113,7 +112,6 @@ export default function RootLayout({
               type="application/ld+json"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                  "@context": "https://schema.org",
                   "@type": "Product",
                   "name": "Vibe",
                   "description": "Vibe lets you create apps and websites by chatting with AI. Instantly generate, deploy, and manage your projects with ease.",
@@ -121,8 +119,8 @@ export default function RootLayout({
                     "@type": "Brand",
                     "name": "Vibe"
                   },
-                  "logo": "https://vibable.vercel.app/logo.png",
-                  "url": "https://vibable.vercel.app"
+                  "logo": "https://vibable.xyz/logo.png",
+                  "url": "https://vibable.xyz"
                 })
               }}
             />
